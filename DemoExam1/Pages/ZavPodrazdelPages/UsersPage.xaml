@@ -1,0 +1,31 @@
+﻿<Page x:Class="DemoExam1.Pages.ZavPodrazdelPages.UsersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DemoExam1.Pages.ZavPodrazdelPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UsersPage">
+
+    <Grid>
+        <Button  Content="Добавить"/>
+        <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="Fire" Click="FireUser" Header="Уволить"/>
+                    <MenuItem Click="AddUser" Header="Добавить сотрудника"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Login}" Header="Логин"/>
+                <DataGridTextColumn Binding="{Binding Status}" Header="Статус"/>
+                <DataGridTextColumn Binding="{Binding Lastname}" Header="Фамилия"/>
+                <DataGridTextColumn Binding="{Binding Firstname}" Header="Имя"/>
+                <DataGridTextColumn Binding="{Binding Middlename}" Header="Отчество"/>
+                <DataGridTextColumn Binding="{Binding Userrole.Namerole}" Header="Роль"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

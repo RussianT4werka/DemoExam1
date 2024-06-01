@@ -1,0 +1,57 @@
+﻿<Page x:Class="DemoExam1.Pages.ZavPodrazdelPages.CreateShiftPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DemoExam1.Pages.ZavPodrazdelPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CreateShift">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Label Margin="0 0 0 10" Content="Создание смены" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+            <Label Content="Дата начала"/>
+            <DatePicker Margin="0 0 0 10" SelectedDate="{Binding SelectedDateStart}"/>
+            <Label Content="Дата концы"/>
+            <DatePicker Margin="0 0 0 10" SelectedDate="{Binding SelectedDateEnd}"/>
+            <Button Click="CreateShift" Content="Создать смену"/>
+        </StackPanel>
+
+        <StackPanel Grid.RowSpan="2" Grid.Column="1">
+            <Label Margin="0 0 0 10" Content="Список всех техников/организаторов" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+            <DataGrid  CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding UsersTechAndOrg}" SelectedItem="{Binding SelectedUser}">
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Click="AssignToShift" Header="Назначить на смену"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Lastname}" Header="Фамилия"/>
+                    <DataGridTextColumn Binding="{Binding Firstname}" Header="Имя"/>
+                    <DataGridTextColumn Binding="{Binding Middlename}" Header="Отчество"/>
+                    <DataGridTextColumn Binding="{Binding Userrole.Namerole}" Header="Роль"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <DataGrid  CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding UsersForShift}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding User.Lastname}" Header="Фамилия"/>
+                    <DataGridTextColumn Binding="{Binding User.Firstname}" Header="Имя"/>
+                    <DataGridTextColumn Binding="{Binding User.Middlename}" Header="Отчество"/>
+                    <DataGridTextColumn Binding="{Binding User.Userrole.Namerole}" Header="Роль"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>

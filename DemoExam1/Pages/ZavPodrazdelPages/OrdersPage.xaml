@@ -1,0 +1,23 @@
+﻿<Page x:Class="DemoExam1.Pages.ZavPodrazdelPages.OrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DemoExam1.Pages.ZavPodrazdelPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OrdersPage">
+
+    <Grid>
+        <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Orders}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Datecreation}" Header="Дата создания"/>
+                <DataGridTextColumn Binding="{Binding Nameconference}" Header="Название конференции"/>
+                <DataGridTextColumn Binding="{Binding Paymentstatus}" Header="Статус оплаты"/>
+                <DataGridTextColumn Binding="{Binding Orderstatus}" Header="Статус заказа"/>
+                <DataGridTextColumn Binding="{Binding Equipment}" Header="Оборудование"/>
+                <DataGridTextColumn Binding="{Binding Amountguests}" Header="Кол-во гостей"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

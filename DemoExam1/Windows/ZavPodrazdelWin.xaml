@@ -1,0 +1,22 @@
+﻿<Window x:Class="DemoExam1.Windows.ZavPodrazdelWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoExam1.Windows"
+        mc:Ignorable="d"
+        Title="Заведующий подразделением" MinHeight="450" MinWidth="800" Height="500" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Margin="0 0 10 0" MinWidth="100" Content="Сотрудники" Click="ToUsersPage"/>
+            <Button Margin="0 0 10 0" MinWidth="100" Content="Заказы" Click="ToOrdersPage"/>
+            <Button Margin="0 0 10 0" MinWidth="100" Content="Смены" Click="ToShiftPage"/>
+            <Button MinWidth="100" Content="Создать смену" Click="ToCreateShiftPage"/>
+        </StackPanel>
+        <Frame Grid.Row="1" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
+    </Grid>
+</Window>
