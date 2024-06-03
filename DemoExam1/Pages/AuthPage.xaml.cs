@@ -73,7 +73,7 @@ namespace DemoExam1
                         Login = null;
                         Password = null;
 
-                        Window win = new Windows.OrganizatorWin();
+                        Window win = new Windows.OrganizatorWin(findUser);
                         win.Show();
                     }
                     else if(findUser.Userrole.Namerole == "Техник")

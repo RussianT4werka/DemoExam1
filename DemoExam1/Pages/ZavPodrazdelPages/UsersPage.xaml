@@ -9,23 +9,26 @@
       Title="UsersPage">
 
     <Grid>
-        <Button  Content="Добавить"/>
-        <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
-            <DataGrid.ContextMenu>
-                <ContextMenu>
-                    <MenuItem x:Name="Fire" Click="FireUser" Header="Уволить"/>
-                    <MenuItem Click="AddUser" Header="Добавить сотрудника"/>
-                </ContextMenu>
-            </DataGrid.ContextMenu>
-            
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Login}" Header="Логин"/>
-                <DataGridTextColumn Binding="{Binding Status}" Header="Статус"/>
-                <DataGridTextColumn Binding="{Binding Lastname}" Header="Фамилия"/>
-                <DataGridTextColumn Binding="{Binding Firstname}" Header="Имя"/>
-                <DataGridTextColumn Binding="{Binding Middlename}" Header="Отчество"/>
-                <DataGridTextColumn Binding="{Binding Userrole.Namerole}" Header="Роль"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <StackPanel>
+            <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Список сотудников"/>
+            <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="Fire" Click="FireUser" Header="Уволить"/>
+                        <MenuItem Click="AddUser" Header="Добавить сотрудника"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Login}" Header="Логин"/>
+                    <DataGridTextColumn Binding="{Binding Status}" Header="Статус"/>
+                    <DataGridTextColumn Binding="{Binding Lastname}" Header="Фамилия"/>
+                    <DataGridTextColumn Binding="{Binding Firstname}" Header="Имя"/>
+                    <DataGridTextColumn Binding="{Binding Middlename}" Header="Отчество"/>
+                    <DataGridTextColumn Binding="{Binding Userrole.Namerole}" Header="Роль"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        
     </Grid>
 </Page>
