@@ -25,8 +25,8 @@ namespace DemoExam1.Pages.ZavPodrazdelPages
     public partial class CreateShiftPage : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-        public DateTime SelectedDateStart {  get; set; }
-        public DateTime SelectedDateEnd { get; set; }
+        public DateTime SelectedDateStart {  get; set; } = DateTime.Now;
+        public DateTime SelectedDateEnd { get; set; } = DateTime.Now.AddDays(1);
         public List<User> UsersTechAndOrg { get; set; }
         public List<Userlist> UsersForShift 
         { 
@@ -59,14 +59,23 @@ namespace DemoExam1.Pages.ZavPodrazdelPages
             DB.ConferenceContext.Instance().Add(newShift);
             DB.ConferenceContext.Instance().SaveChanges();
             lastShift = DB.ConferenceContext.Instance().Shifts.ToList().Last();
+            MessageBox.Show("Смена успешно создана!");
+            BtnCreateShift.IsEnabled = false;
         }
 
         private void AssignToShift(object sender, RoutedEventArgs e)
         {
-            Userlist newUsetList = new Userlist() {Shiftid = lastShift.Shiftid, Userid = SelectedUser.Userid };
-            DB.ConferenceContext.Instance().Add(newUsetList);
-            DB.ConferenceContext.Instance().SaveChanges();
-            UsersForShift = DB.ConferenceContext.Instance().Userlists.Include( s => s.User).ThenInclude( s => s.Userrole).Where( s => s.Shiftid == lastShift.Shiftid).ToList();
+            if(lastShift == null)
+            {
+                MessageBox.Show("Сначала создайте смену");
+            }
+            else
+            {
+                Userlist newUsetList = new Userlist() {Shiftid = lastShift.Shiftid, Userid = SelectedUser.Userid };
+                DB.ConferenceContext.Instance().Add(newUsetList);
+                DB.ConferenceContext.Instance().SaveChanges();
+                UsersForShift = DB.ConferenceContext.Instance().Userlists.Include( s => s.User).ThenInclude( s => s.Userrole).Where( s => s.Shiftid == lastShift.Shiftid).ToList();
+            }
         }
 
     }

@@ -9,11 +9,30 @@
       Title="ShiftsPage">
 
     <Grid>
-        <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Shifts}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Datestart}" Header="Дата начала"/>
-                <DataGridTextColumn Binding="{Binding Dateend}" Header="Дата конца"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Label HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Content="Смены"/>
+            <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Shifts}" SelectedItem="{Binding SelectedShift}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Datestart}" Header="Дата начала"/>
+                    <DataGridTextColumn Binding="{Binding Dateend}" Header="Дата конца"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1">
+            <Label HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Content="Назначенные на смену"/>
+            <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding UserList}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding User.Lastname}" Header="Фамилия"/>
+                    <DataGridTextColumn Binding="{Binding User.Firstname}" Header="Имя"/>
+                    <DataGridTextColumn Binding="{Binding User.Middlename}" Header="Отчество"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        
     </Grid>
 </Page>

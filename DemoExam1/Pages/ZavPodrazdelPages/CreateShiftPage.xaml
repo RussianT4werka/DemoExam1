@@ -23,7 +23,7 @@
             <DatePicker Margin="0 0 0 10" SelectedDate="{Binding SelectedDateStart}"/>
             <Label Content="Дата концы"/>
             <DatePicker Margin="0 0 0 10" SelectedDate="{Binding SelectedDateEnd}"/>
-            <Button Click="CreateShift" Content="Создать смену"/>
+            <Button x:Name="BtnCreateShift" Click="CreateShift" Content="Создать смену"/>
         </StackPanel>
 
         <StackPanel Grid.RowSpan="2" Grid.Column="1">
