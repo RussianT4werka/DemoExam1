@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoExam1.Pages.TechPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,12 @@ namespace DemoExam1.Windows
     /// </summary>
     public partial class TechnikWin : Window
     {
+        public Page CurrentPage { get; set; }
         public TechnikWin()
         {
             InitializeComponent();
+            DataContext = this;
+            CurrentPage = new OrderPage();
         }
     }
 }

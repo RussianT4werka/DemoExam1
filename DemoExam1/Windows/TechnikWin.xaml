@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoExam1.Windows"
         mc:Ignorable="d"
-        Title="Техник" MinHeight="450" MinWidth="800" Height="500" Width="800">
+        Title="Техник" MinHeight="450" MinWidth="800" Height="500" Width="900">
     <Grid>
-        
+        <Frame NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
     </Grid>
 </Window>
